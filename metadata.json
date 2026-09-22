@@ -1,0 +1,6 @@
+{
+  "name": "Velora Beauty",
+  "description": "Beauty, Refined. A luxury cosmetics, skincare, and fragrance brand combining fashion editorial aesthetics with modern skincare rituals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

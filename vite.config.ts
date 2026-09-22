@@ -4,10 +4,9 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
-  const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1];
-
   return {
-    base: process.env.GITHUB_ACTIONS && repositoryName ? `/${repositoryName}/` : '/',
+    // Relative assets work for both a repository project page and root hosting.
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

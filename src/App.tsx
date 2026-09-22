@@ -148,7 +148,6 @@ export default function App() {
         {/* The Velora Edit (Bestsellers Section) */}
         <BestsellersSection
           onQuickView={(p) => setSelectedProduct(p)}
-          onAddToCart={handleAddToCart}
           onToggleWishlist={handleToggleWishlist}
           wishlistIds={wishlistIds}
           initialCategoryFilter={categoryFilter}

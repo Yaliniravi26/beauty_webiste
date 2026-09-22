@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../types';
-import { X, Star, Heart, ShieldCheck, Sparkles, Droplets, ArrowRight } from 'lucide-react';
+import { X, Star, Heart, ShieldCheck, Sparkles, Droplets, ArrowRight, Check } from 'lucide-react';
 import { handleImageError } from '../data/images';
 
 interface ProductViewerProps {

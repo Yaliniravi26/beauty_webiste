@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PRODUCTS } from '../data/products';
 import { Product } from '../types';
-import { Sparkles, ArrowRight, Check, RotateCcw, Heart, ShoppingBag } from 'lucide-react';
+import { Sparkles, ArrowRight, Check, RotateCcw, Heart } from 'lucide-react';
 
 interface BeautyQuizProps {
   onQuickView: (product: Product) => void;
@@ -156,21 +156,13 @@ export default function BeautyQuiz({ onQuickView, onAddToCart }: BeautyQuizProps
                   <span className="font-mono text-sm font-medium text-[#1F1A18]">
                     ${product.price} USD
                   </span>
-                  <div className="flex items-center space-x-2">
+                  <div>
                     <button
                       id={`quiz-view-btn-${product.id}`}
                       onClick={() => onQuickView(product)}
                       className="px-3 py-1.5 rounded-full border border-[#D5C6B7] text-[#2B231F] text-[10px] font-mono uppercase tracking-widest hover:bg-[#2B231F] hover:text-white transition-colors"
                     >
                       DETAILS
-                    </button>
-                    <button
-                      id={`quiz-add-btn-${product.id}`}
-                      onClick={() => onAddToCart(product)}
-                      className="p-2 rounded-full bg-[#2B231F] text-white hover:bg-[#BFA37C] transition-colors"
-                      title="Add to bag"
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>

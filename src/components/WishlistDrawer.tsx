@@ -103,14 +103,6 @@ export default function WishlistDrawer({
 
                   <div className="flex items-center space-x-3 mt-2">
                     <button
-                      onClick={() => onAddToCart(product)}
-                      className="px-3 py-1 rounded-full bg-[#2B231F] text-white text-[10px] font-mono uppercase tracking-wider hover:bg-[#BFA37C] transition-colors flex items-center space-x-1"
-                    >
-                      <ShoppingBag className="w-3 h-3" />
-                      <span>ADD TO BAG</span>
-                    </button>
-
-                    <button
                       onClick={() => onRemoveFromWishlist(product)}
                       className="text-[#968981] hover:text-red-700 transition-colors p-1"
                       title="Remove from wishlist"
@@ -125,18 +117,6 @@ export default function WishlistDrawer({
         </div>
 
         {/* Footer */}
-        {wishlistProducts.length > 0 && (
-          <div className="p-6 bg-white border-t border-[#EADDD0]">
-            <button
-              onClick={() => {
-                wishlistProducts.forEach((p) => onAddToCart(p));
-              }}
-              className="w-full py-4 rounded-full bg-[#2B231F] text-[#FAF7F2] font-mono text-xs uppercase tracking-[0.24em] font-medium hover:bg-[#BFA37C] transition-colors shadow-md"
-            >
-              MOVE ALL TO SHOPPING BAG
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

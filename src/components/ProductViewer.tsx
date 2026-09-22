@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../types';
-import { X, Star, Heart, ShoppingBag, Check, ShieldCheck, Sparkles, Droplets, ArrowRight } from 'lucide-react';
+import { X, Star, Heart, ShieldCheck, Sparkles, Droplets, ArrowRight } from 'lucide-react';
 import { handleImageError } from '../data/images';
 
 interface ProductViewerProps {
@@ -18,9 +18,7 @@ export default function ProductViewer({
   onToggleWishlist,
   isWishlisted
 }: ProductViewerProps) {
-  const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'benefits' | 'ingredients' | 'howToUse'>('benefits');
-  const [added, setAdded] = useState(false);
   const [currentImage, setCurrentImage] = useState(product.imageUrl);
 
   // Close on Escape key
@@ -31,12 +29,6 @@ export default function ProductViewer({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
-
-  const handleAdd = () => {
-    onAddToCart(product, quantity, product.shade);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  };
 
   return (
     <div
@@ -122,7 +114,7 @@ export default function ProductViewer({
 
           </div>
 
-          {/* Right Column: Editorial Specifications, Ingredients & Purchase Controls */}
+            {/* Right Column: Editorial Specifications and Ingredients */}
           <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6">
             
             <div className="space-y-4">
@@ -225,47 +217,6 @@ export default function ProductViewer({
                 </div>
               </div>
 
-            </div>
-
-            {/* Quantity Selector & Add to Bag */}
-            <div className="pt-6 border-t border-[#EADDD0] flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              {/* Quantity */}
-              <div className="flex items-center justify-between border border-[#D5C6B7] rounded-full px-4 py-3 bg-[#FAF7F2] sm:w-36">
-                <button
-                  id="qty-minus-btn"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="text-base text-[#5C534D] hover:text-[#1F1A18] font-mono px-2"
-                >
-                  -
-                </button>
-                <span className="font-mono text-sm font-semibold text-[#1F1A18]">{quantity}</span>
-                <button
-                  id="qty-plus-btn"
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="text-base text-[#5C534D] hover:text-[#1F1A18] font-mono px-2"
-                >
-                  +
-                </button>
-              </div>
-
-              {/* Add to Bag CTA */}
-              <button
-                id="modal-add-to-bag"
-                onClick={handleAdd}
-                className="flex-1 py-4 px-6 rounded-full bg-[#2B231F] text-[#FAF7F2] hover:bg-[#BFA37C] font-mono text-xs uppercase tracking-[0.24em] font-medium transition-all duration-300 shadow-md flex items-center justify-center space-x-2"
-              >
-                {added ? (
-                  <>
-                    <Check className="w-4 h-4 text-white" />
-                    <span>ADDED TO BAG</span>
-                  </>
-                ) : (
-                  <>
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>ADD TO BAG — ${(product.price * quantity)} USD</span>
-                  </>
-                )}
-              </button>
             </div>
 
           </div>

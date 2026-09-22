@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { PRODUCTS } from '../data/products';
 import { Product } from '../types';
-import { Heart, Star, ShoppingBag, Eye, Sparkles } from 'lucide-react';
+import { Heart, Star, Eye, Sparkles } from 'lucide-react';
 import { handleImageError } from '../data/images';
 
 interface BestsellersSectionProps {
   onQuickView: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
   onToggleWishlist: (product: Product) => void;
   wishlistIds: string[];
   initialCategoryFilter?: string;
@@ -14,7 +13,6 @@ interface BestsellersSectionProps {
 
 export default function BestsellersSection({
   onQuickView,
-  onAddToCart,
   onToggleWishlist,
   wishlistIds,
   initialCategoryFilter = 'All'
@@ -135,27 +133,14 @@ export default function BestsellersSection({
                   </button>
 
                   {/* Quick View Button on Hover */}
-                  <div className="absolute bottom-3.5 inset-x-3.5 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute bottom-3.5 inset-x-3.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                     <button
                       id={`quick-view-btn-${product.id}`}
                       onClick={() => onQuickView(product)}
-                      className="flex-1 py-2.5 rounded-xl bg-white/95 backdrop-blur-md text-[#2B231F] text-xs font-mono uppercase tracking-widest flex items-center justify-center space-x-1.5 hover:bg-white shadow-md transition-colors"
+                      className="w-full py-2.5 rounded-xl bg-white/95 backdrop-blur-md text-[#2B231F] text-xs font-mono uppercase tracking-widest flex items-center justify-center space-x-1.5 hover:bg-white shadow-md transition-colors"
                     >
                       <Eye className="w-3.5 h-3.5 text-[#BFA37C]" />
                       <span>DETAILS</span>
-                    </button>
-
-                    <button
-                      id={`quick-add-btn-${product.id}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onAddToCart(product);
-                      }}
-                      className="p-2.5 rounded-xl bg-[#2B231F] text-white hover:bg-[#453730] shadow-md transition-colors"
-                      title="Quick Add to Bag"
-                      aria-label="Add to bag"
-                    >
-                      <ShoppingBag className="w-4 h-4 text-[#FAF7F2]" />
                     </button>
                   </div>
                 </div>
@@ -191,22 +176,14 @@ export default function BestsellersSection({
                     </p>
                   </div>
 
-                  {/* Price & Primary CTA */}
-                  <div className="pt-4 mt-2 border-t border-[#E8DDD0] flex items-center justify-between">
+                  {/* Price */}
+                  <div className="pt-4 mt-2 border-t border-[#E8DDD0]">
                     <div>
                       <span className="text-lg font-mono font-medium text-[#1F1A18]">
                         ${product.price}
                       </span>
                       <span className="text-[10px] font-mono text-[#8D7F77] ml-1">USD</span>
                     </div>
-
-                    <button
-                      id={`add-to-bag-btn-${product.id}`}
-                      onClick={() => onAddToCart(product)}
-                      className="px-4 py-2 rounded-full bg-[#2B231F] text-[#FAF7F2] text-xs font-mono uppercase tracking-wider hover:bg-[#BFA37C] hover:text-white transition-all duration-300 flex items-center space-x-1.5 shadow-sm"
-                    >
-                      <span>ADD TO BAG</span>
-                    </button>
                   </div>
                 </div>
               </div>

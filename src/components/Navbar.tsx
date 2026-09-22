@@ -120,20 +120,6 @@ export default function Navbar({
               )}
             </button>
 
-            {/* Shopping Bag */}
-            <button
-              id="nav-cart-btn"
-              onClick={onOpenCart}
-              className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#2B231F] text-[#FAF7F2] hover:bg-[#423731] transition-all duration-300 shadow-sm"
-              title="Shopping Bag"
-              aria-label="Cart"
-            >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span className="text-xs font-mono font-medium">
-                {cartCount}
-              </span>
-            </button>
-
             {/* Mobile Hamburger */}
             <button
               id="nav-mobile-toggle"
@@ -172,16 +158,6 @@ export default function Navbar({
           </div>
 
           <div className="space-y-4 pt-6 border-t border-[#EADDD0]">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenCart();
-              }}
-              className="w-full py-4 bg-[#2B231F] text-[#FAF7F2] text-xs uppercase tracking-[0.24em] font-medium flex items-center justify-center space-x-2"
-            >
-              <span>VIEW SHOPPING BAG ({cartCount})</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
             <div className="text-center text-[10px] tracking-[0.2em] text-[#8D7F77] uppercase font-sans">
               Complimentary Global Delivery On Orders Above $120
             </div>

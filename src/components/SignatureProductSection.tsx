@@ -786,26 +786,8 @@ export default function SignatureProductSection({
               </div>
             )}
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
-              <button
-                id="signature-add-btn"
-                onClick={handleAdd}
-                className="px-8 py-3.5 bg-[#C5A880] text-[#181311] hover:bg-[#DBC19D] font-mono text-xs uppercase tracking-[0.24em] font-semibold transition-all duration-300 shadow-lg flex items-center space-x-2 cursor-pointer"
-              >
-                {added ? (
-                  <>
-                    <Check className="w-4 h-4 text-[#181311]" />
-                    <span>ADDED TO BAG</span>
-                  </>
-                ) : (
-                  <>
-                    <ShoppingBag className="w-4 h-4 text-[#181311]" />
-                    <span>CLAIM YOUR GLOW — ${product.price}</span>
-                  </>
-                )}
-              </button>
-
+            {/* Product details */}
+            <div className="flex items-center gap-4 mt-6">
               <button
                 id="signature-details-btn"
                 onClick={() => onQuickView(product)}
